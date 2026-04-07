@@ -3,174 +3,323 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Crewdine — Dine with your crew</title>
-<meta name="description" content="Stop the group chat chaos. Crewdine matches your crew's schedule, taste and budget — then books the table. Launching in SF."/>
+<title>Crewdine — Skip straight to the good part</title>
+<meta name="description" content="Crewdine handles the planning so you can focus on what matters: actually being there. For friend groups, solo diners, and restaurants. Launching in SF."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0A0804;--coral:#E8503A;--cream:#F5EFE6;--dim:#9A8A7A;--border:rgba(245,239,230,0.08)}
+:root{
+  --bg:#090806;
+  --coral:#E8503A;
+  --coral2:#F0725E;
+  --cream:#F5EFE6;
+  --dim:#8A7A6A;
+  --gold:#C49A2A;
+  --green:#2A7A4A;
+  --border:rgba(245,239,230,0.07);
+  --card:#111009;
+}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;background:rgba(10,8,4,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--cream);text-decoration:none}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;background:rgba(9,8,6,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--cream);text-decoration:none;letter-spacing:-.02em}
 .logo span{color:var(--coral)}
-.nav-cta{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);text-decoration:none;border:1px solid var(--coral);padding:.4rem 1rem;border-radius:2rem;transition:all .2s}
-.nav-cta:hover{background:var(--coral);color:#000}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden}
-.glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(232,80,58,.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#C9952A;border:1px solid rgba(201,149,42,.3);padding:.4rem 1rem;border-radius:2rem;margin-bottom:2rem;animation:up .7s ease both}
-.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#C9952A;animation:pulse 2s infinite}
-h1{font-family:'Fraunces',serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:1.0;letter-spacing:-.03em;max-width:860px;animation:up .7s .1s ease both}
+.nav-btn{font-size:.8rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--coral);text-decoration:none;border:1px solid var(--coral);padding:.45rem 1.1rem;border-radius:2rem;transition:all .2s}
+.nav-btn:hover{background:var(--coral);color:#fff}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1600&q=80&fit=crop');background-size:cover;background-position:center 30%;filter:brightness(.35)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,8,6,0.3) 0%,rgba(9,8,6,0.6) 60%,var(--bg) 100%)}
+.hero-content{position:relative;text-align:center;padding:0 1.5rem;max-width:900px}
+.badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.73rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,42,.35);padding:.4rem 1rem;border-radius:2rem;margin-bottom:2rem;animation:up .8s ease both}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+h1{font-family:'Fraunces',serif;font-size:clamp(2.8rem,9vw,6rem);font-weight:700;line-height:1.0;letter-spacing:-.03em;animation:up .8s .1s ease both}
 h1 em{font-style:italic;color:var(--coral)}
-.sub{font-size:clamp(.95rem,2.5vw,1.2rem);color:var(--dim);max-width:500px;margin-top:1.5rem;animation:up .7s .2s ease both}
-.form-wrap{margin-top:2.5rem;width:100%;max-width:460px;animation:up .7s .3s ease both}
-.wl-form{display:flex;gap:.5rem;background:rgba(245,239,230,.05);border:1px solid var(--border);border-radius:3rem;padding:.3rem .3rem .3rem 1.2rem;transition:border-color .2s}
-.wl-form:focus-within{border-color:rgba(232,80,58,.4)}
-.wl-form input{flex:1;background:none;border:none;outline:none;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.9rem}
-.wl-form input::placeholder{color:var(--dim)}
-.wl-form button{background:var(--coral);color:#fff;border:none;padding:.7rem 1.4rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:opacity .2s}
-.wl-form button:hover{opacity:.85}
-.note{font-size:.75rem;color:var(--dim);margin-top:.7rem;text-align:center}
-.success{display:none;color:#C9952A;font-size:.9rem;text-align:center;padding:1rem;border:1px solid rgba(201,149,42,.3);border-radius:1rem;margin-top:.5rem}
-.avatars{display:flex;align-items:center;gap:.75rem;margin-top:2.5rem;animation:up .7s .4s ease both}
-.stack{display:flex}
-.stack span{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-7px;font-size:.8rem;display:flex;align-items:center;justify-content:center;background:#1a1510}
-.stack span:first-child{margin-left:0}
-.avatars p{font-size:.8rem;color:var(--dim)}
-.avatars p strong{color:var(--cream)}
-section{padding:5rem 1.5rem;max-width:1000px;margin:0 auto}
-.label{font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem}
-h2{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:400;line-height:1.15;letter-spacing:-.02em}
-h2 em{font-style:italic;color:var(--dim)}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:2.5rem;background:var(--border);border:1px solid var(--border);border-radius:1.25rem;overflow:hidden}
-.step{background:#120F0A;padding:2rem 1.75rem}
-.step-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:700;color:rgba(232,80,58,.12);line-height:1;margin-bottom:1rem}
-.step-i{font-size:1.5rem;margin-bottom:.75rem}
-.step h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:400;margin-bottom:.4rem}
-.step p{font-size:.87rem;color:var(--dim);line-height:1.6}
-.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:2.5rem}
-.feat{padding:1.75rem;border:1px solid var(--border);border-radius:1rem;background:#120F0A;transition:border-color .3s}
-.feat:hover{border-color:rgba(232,80,58,.25)}
-.feat-i{font-size:1.4rem;margin-bottom:.75rem}
-.feat h3{font-size:.95rem;font-weight:500;margin-bottom:.3rem}
-.feat p{font-size:.85rem;color:var(--dim);line-height:1.6}
-.callout{margin:2rem 1.5rem;max-width:1000px;margin-left:auto;margin-right:auto;padding:3rem 2rem;border:1px solid var(--border);border-radius:1.75rem;background:linear-gradient(135deg,rgba(232,80,58,.07) 0%,transparent 60%);text-align:center}
-.callout h2{max-width:520px;margin:.5rem auto 1rem}
-.callout p{font-size:.95rem;color:var(--dim);max-width:420px;margin:0 auto 2rem}
-.btn{display:inline-block;background:var(--coral);color:#fff;padding:.8rem 2rem;border-radius:2rem;font-size:.92rem;font-weight:500;text-decoration:none;transition:opacity .2s}
-.btn:hover{opacity:.85}
-.final{padding:7rem 1.5rem;text-align:center}
-.final h2{font-family:'Fraunces',serif;font-size:clamp(2.2rem,8vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;max-width:660px;margin:0 auto 2rem}
-.final h2 em{font-style:italic;color:var(--coral)}
-footer{border-top:1px solid var(--border);padding:2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;max-width:1000px;margin:0 auto}
+.hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(245,239,230,.75);max-width:520px;margin:1.5rem auto 0;animation:up .8s .2s ease both}
+.form-wrap{margin-top:2.5rem;width:100%;max-width:460px;margin-left:auto;margin-right:auto;animation:up .8s .3s ease both}
+.wlf{display:flex;gap:.4rem;background:rgba(245,239,230,.06);border:1px solid rgba(245,239,230,.12);border-radius:3rem;padding:.3rem .3rem .3rem 1.2rem;transition:border-color .2s}
+.wlf:focus-within{border-color:rgba(232,80,58,.5)}
+.wlf input{flex:1;background:none;border:none;outline:none;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.9rem;min-width:0}
+.wlf input::placeholder{color:var(--dim)}
+.wlf button{background:var(--coral);color:#fff;border:none;padding:.72rem 1.4rem;border-radius:2rem;font-family:'DM Sans',sans-serif;font-size:.87rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .2s}
+.wlf button:hover{background:var(--coral2)}
+.fnote{font-size:.74rem;color:var(--dim);margin-top:.7rem;text-align:center}
+.success-msg{display:none;color:var(--gold);font-size:.9rem;text-align:center;padding:1rem;border:1px solid rgba(196,154,42,.3);border-radius:1rem;margin-top:.5rem}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;animation:up .8s .6s ease both}
+.scroll-hint span{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.scroll-hint div{width:1px;height:40px;background:linear-gradient(to bottom,var(--coral),transparent)}
+
+/* SECTIONS */
+.section{padding:6rem 1.5rem;max-width:1100px;margin:0 auto}
+.section-sm{padding:4rem 1.5rem;max-width:1100px;margin:0 auto}
+.tag{font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem}
+.tag-coral{color:var(--coral)}
+.tag-gold{color:var(--gold)}
+.tag-green{color:var(--green)}
+h2{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+h2 em{font-style:italic;font-weight:300;color:var(--dim)}
+.lead{font-size:clamp(1rem,2vw,1.1rem);color:var(--dim);max-width:560px;margin-top:1rem;line-height:1.7}
+
+/* PROBLEM SECTION */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;align-items:center}
+.chat-sim{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.chat-header{display:flex;align-items:center;gap:.75rem;padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:.5rem}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#444,#222);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.chat-title{font-size:.85rem;font-weight:500}
+.chat-sub{font-size:.7rem;color:var(--dim)}
+.msg{max-width:80%;padding:.6rem .9rem;border-radius:1rem;font-size:.82rem;line-height:1.4}
+.msg.them{background:rgba(245,239,230,.07);border-radius:1rem 1rem 1rem .2rem;align-self:flex-start}
+.msg.me{background:rgba(232,80,58,.15);border-radius:1rem 1rem .2rem 1rem;align-self:flex-end;text-align:right}
+.msg-name{font-size:.65rem;color:var(--dim);margin-bottom:.2rem}
+.chaos-label{text-align:center;font-size:.75rem;color:var(--coral);letter-spacing:.08em;margin-top:.5rem}
+.vs-divider{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:0 .5rem}
+.vs-line{flex:1;width:1px;background:linear-gradient(to bottom,transparent,var(--coral),transparent)}
+.vs-text{font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;color:var(--coral);white-space:nowrap}
+.problem-photo{border-radius:1.5rem;overflow:hidden;aspect-ratio:3/4;position:relative}
+.problem-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.85)}
+.problem-photo-caption{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(to top,rgba(9,8,6,.9),transparent);font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;color:var(--cream)}
+
+/* SKIP SECTION */
+.skip-section{position:relative;overflow:hidden;padding:7rem 1.5rem;text-align:center}
+.skip-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80&fit=crop');background-size:cover;background-position:center;filter:brightness(.2)}
+.skip-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(9,8,6,.7),rgba(232,80,58,.1))}
+.skip-content{position:relative;max-width:720px;margin:0 auto}
+.skip-content h2{font-size:clamp(2.2rem,6vw,4rem)}
+.skip-content p{font-size:1.1rem;color:rgba(245,239,230,.75);margin:1.5rem auto;max-width:500px}
+.big-quote{font-family:'Fraunces',serif;font-size:clamp(1.3rem,3.5vw,2rem);font-style:italic;color:var(--cream);line-height:1.3;max-width:600px;margin:2rem auto;opacity:.9}
+.big-quote::before{content:'\201C';color:var(--coral);font-size:3rem;line-height:0;vertical-align:-.5em;margin-right:.1em}
+
+/* AUDIENCE SECTIONS */
+.audience{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
+.audience.reverse{direction:rtl}
+.audience.reverse > *{direction:ltr}
+.audience-photo{border-radius:2rem;overflow:hidden;aspect-ratio:4/5;position:relative}
+.audience-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.audience-photo:hover img{transform:scale(1.03)}
+.audience-photo-badge{position:absolute;top:1.25rem;left:1.25rem;background:rgba(9,8,6,.75);backdrop-filter:blur(8px);border:1px solid var(--border);padding:.4rem .9rem;border-radius:2rem;font-size:.75rem;font-weight:500;letter-spacing:.06em}
+.audience-text h2{margin-bottom:1rem}
+.feat-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+.feat-item{display:flex;align-items:flex-start;gap:.9rem}
+.feat-icon{width:40px;height:40px;border-radius:.75rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.feat-icon.coral{background:rgba(232,80,58,.12)}
+.feat-icon.gold{background:rgba(196,154,42,.12)}
+.feat-icon.green{background:rgba(42,122,74,.12)}
+.feat-text h4{font-size:.95rem;font-weight:500;margin-bottom:.2rem}
+.feat-text p{font-size:.85rem;color:var(--dim);line-height:1.6}
+
+/* EVERYONE WINS */
+.wins{padding:6rem 1.5rem;max-width:1100px;margin:0 auto;text-align:center}
+.wins h2{margin-bottom:.75rem}
+.wins-sub{font-size:1rem;color:var(--dim);margin-bottom:3rem}
+.wins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.win-card{padding:2rem 1.5rem;border:1px solid var(--border);border-radius:1.5rem;background:var(--card);text-align:left;position:relative;overflow:hidden;transition:border-color .3s,transform .2s}
+.win-card:hover{border-color:rgba(232,80,58,.25);transform:translateY(-3px)}
+.win-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.win-card.friends::before{background:var(--coral)}
+.win-card.solo::before{background:var(--gold)}
+.win-card.resto::before{background:var(--green)}
+.win-emoji{font-size:2rem;margin-bottom:1rem}
+.win-card h3{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:400;margin-bottom:.5rem}
+.win-card p{font-size:.87rem;color:var(--dim);line-height:1.65}
+
+/* HOW IT WORKS */
+.hiw{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
+.hiw-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:1.5rem;overflow:hidden;margin-top:2.5rem}
+.hiw-step{background:var(--card);padding:2.5rem 2rem}
+.step-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:700;color:rgba(232,80,58,.1);line-height:1;margin-bottom:1rem}
+.step-icon{font-size:1.6rem;margin-bottom:.75rem}
+.hiw-step h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:400;margin-bottom:.4rem}
+.hiw-step p{font-size:.87rem;color:var(--dim);line-height:1.65}
+
+/* PHOTO STRIP */
+.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;padding:0 1.5rem;max-width:1200px;margin:0 auto 5rem}
+.strip-photo{border-radius:1rem;overflow:hidden;aspect-ratio:3/4}
+.strip-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.strip-photo:hover img{transform:scale(1.05)}
+.strip-photo:nth-child(2){margin-top:2rem}
+.strip-photo:nth-child(4){margin-top:-2rem}
+
+/* FINAL CTA */
+.final-cta{position:relative;overflow:hidden;padding:8rem 1.5rem;text-align:center}
+.final-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1543353071-873f17a7a088?w=1400&q=80&fit=crop');background-size:cover;background-position:center top;filter:brightness(.25)}
+.final-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 20%,transparent 80%,var(--bg) 100%)}
+.final-content{position:relative;max-width:600px;margin:0 auto}
+.final-content h2{font-family:'Fraunces',serif;font-size:clamp(2.5rem,8vw,5rem);font-weight:700;line-height:1.0;letter-spacing:-.03em;margin-bottom:.5rem}
+.final-content h2 em{font-style:italic;color:var(--coral)}
+.final-content p{font-size:1rem;color:var(--dim);margin-bottom:2.5rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 1.5rem;max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 footer p,footer a{font-size:.8rem;color:var(--dim);text-decoration:none}
 footer a:hover{color:var(--cream)}
-.flinks{display:flex;gap:1.25rem}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.flinks{display:flex;gap:1.5rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:none}
-@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-@media(max-width:580px){.wl-form{flex-direction:column;border-radius:1rem;padding:.65rem}.wl-form button{border-radius:.75rem;text-align:center}.steps{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.flinks{justify-content:center}}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease}
+.reveal-l.on{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal-r.on{opacity:1;transform:none}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+/* SEPARATOR */
+.sep{width:100%;height:1px;background:var(--border);margin:2rem 0}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
+  .problem-grid{grid-template-columns:1fr;gap:1rem}
+  .vs-divider{flex-direction:row;padding:.5rem 0}
+  .vs-line{width:40px;height:1px;flex:none}
+  .audience{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem}
+  .audience.reverse{direction:ltr}
+  .wins-grid{grid-template-columns:1fr}
+  .hiw-steps{grid-template-columns:1fr}
+  .photo-strip{grid-template-columns:1fr 1fr;gap:.5rem}
+  .strip-photo:nth-child(2),.strip-photo:nth-child(4){margin-top:0}
+  footer{flex-direction:column;text-align:center}
+  .flinks{justify-content:center}
+  .wlf{flex-direction:column;border-radius:1rem;padding:.6rem}
+  .wlf button{border-radius:.75rem}
+}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <a class="logo" href="#">Crew<span>dine</span></a>
-  <a class="nav-cta" href="#waitlist">Join waitlist</a>
+  <a class="nav-btn" href="#waitlist">Join waitlist</a>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="glow"></div>
-  <div class="badge">Launching in San Francisco</div>
-  <h1>Stop the group<br/>chat <em>chaos.</em><br/>Just dine.</h1>
-  <p class="sub">Crewdine matches your crew's availability, budget and taste — then books the table. One tap. Done.</p>
-  <div class="form-wrap" id="waitlist">
-    <form class="wl-form" id="f1">
-      <input type="email" id="e1" placeholder="your@email.com" required autocomplete="email"/>
-      <button type="submit">Get early access</button>
-    </form>
-    <p class="note">🔒 No spam, ever. SF launch first.</p>
-    <div class="success" id="s1">🎉 You're on the list! We'll reach out when Crewdine drops in SF.</div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="badge">Launching in San Francisco</div>
+    <h1>Some things are<br/>worth the wait.<br/><em>Dinner planning</em><br/>isn't one of them.</h1>
+    <p class="hero-sub">Crewdine handles the logistics so you can focus on what actually matters — being there, together.</p>
+    <div class="form-wrap" id="waitlist">
+      <form class="wlf" id="f1">
+        <input type="email" id="e1" placeholder="your@email.com" required autocomplete="email"/>
+        <button type="submit">Get early access</button>
+      </form>
+      <p class="fnote">🔒 SF launch first. No spam. Free forever for users.</p>
+      <div class="success-msg" id="s1">🎉 You're in! We'll reach out personally when Crewdine lands in SF.</div>
+    </div>
   </div>
-  <div class="avatars">
-    <div class="stack"><span>👩🏽</span><span>👨🏻</span><span>👩🏾</span><span>🧑🏼</span></div>
-    <p><strong>Join SF locals</strong> already on the waitlist</p>
-  </div>
-</div>
-
-<section>
-  <p class="label reveal">How it works</p>
-  <h2 class="reveal">Three steps.<br/>One perfect dinner.</h2>
-  <div class="steps reveal">
-    <div class="step"><div class="step-n">01</div><div class="step-i">👥</div><h3>Create your crew</h3><p>Invite your group. Everyone adds availability, dietary needs, budget and cuisine prefs in 60 seconds.</p></div>
-    <div class="step"><div class="step-n">02</div><div class="step-i">⚡</div><h3>Crewdine matches</h3><p>Our engine cross-references everyone's constraints and surfaces the best restaurant options with real availability.</p></div>
-    <div class="step"><div class="step-n">03</div><div class="step-i">🎉</div><h3>Book. Show up. Enjoy.</h3><p>Confirm in one tap. Table booked. Everyone gets the details. No more back and forth.</p></div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <p class="label reveal">Why Crewdine</p>
-  <h2 class="reveal">Built for how <em>real crews</em> actually dine.</h2>
-  <div class="feats reveal">
-    <div class="feat"><div class="feat-i">🗓️</div><h3>Smart availability matching</h3><p>Finds the slot that works for everyone — not just whoever replies first.</p></div>
-    <div class="feat"><div class="feat-i">🥗</div><h3>Diet & preference aware</h3><p>Vegan, halal, gluten-free, budget-conscious — Crewdine never forgets who needs what.</p></div>
-    <div class="feat"><div class="feat-i">📲</div><h3>One-tap booking</h3><p>Real SF restaurant availability. The table is held, not just suggested.</p></div>
-    <div class="feat"><div class="feat-i">💬</div><h3>Kills the group chat</h3><p>No more "anyone free?". Just a confirmed dinner.</p></div>
-    <div class="feat"><div class="feat-i">🗺️</div><h3>Neighborhood-smart</h3><p>Suggests spots based on where your crew is coming from. Fair for everyone.</p></div>
-    <div class="feat"><div class="feat-i">🔔</div><h3>Smart reminders</h3><p>Auto reminders so no one flakes because they forgot.</p></div>
-  </div>
-</section>
-
-<div class="callout reveal">
-  <p class="label">Where we're starting</p>
-  <h2>Launching in San Francisco first.</h2>
-  <p>Nowhere else has better restaurants, more adventurous crews, and people who hate wasted time.</p>
-  <a class="btn" href="#waitlist">Get SF early access →</a>
-</div>
-
-<div class="final">
-  <h2>Your crew.<br/>Your table.<br/><em>Zero drama.</em></h2>
-  <div class="form-wrap" style="margin:0 auto">
-    <form class="wl-form" id="f2">
-      <input type="email" id="e2" placeholder="your@email.com" required autocomplete="email"/>
-      <button type="submit">Reserve my spot</button>
-    </form>
-    <p class="note">SF launch · Free to join · No spam</p>
-    <div class="success" id="s2">🎉 You're on the list! We'll reach out when Crewdine drops in SF.</div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div></div>
   </div>
 </div>
 
-<footer>
-  <a class="logo" href="#">Crew<span style="color:var(--coral)">dine</span></a>
-  <p>© 2026 Crewdine LLC · San Francisco, CA</p>
-  <div class="flinks">
-    <a href="mailto:hello@crewdine.com">Contact</a>
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-  </div>
-</footer>
+<!-- PROBLEM -->
+<div class="section">
+  <p class="tag tag-coral reveal">The real problem</p>
+  <h2 class="reveal">The dinner never happens.<br/><em>Not because you don't want to go.</em></h2>
+  <p class="lead reveal">Because someone has to figure out when, where, what everyone eats, and what they can spend. And nobody wants to be that person. So the chat dies. Again.</p>
 
-<script>
-const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('on');obs.unobserve(el.target)}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-function setup(fid,eid,sid){
-  document.getElementById(fid).addEventListener('submit',async e=>{
-    e.preventDefault();
-    const email=document.getElementById(eid).value.trim();
-    const btn=document.getElementById(fid).querySelector('button');
-    btn.textContent='Joining...';btn.disabled=true;
-    try{
-      const r=await fetch('https://formspree.io/f/xpqobavr',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email,source:'crewdine-waitlist'})});
-      if(r.ok){document.getElementById(fid).style.display='none';document.getElementById(sid).style.display='block';}
-      else throw new Error();
-    }catch{
-      const d=JSON.parse(localStorage.getItem('cd_wl')||'[]');d.push({email,ts:new Date().toISOString()});localStorage.setItem('cd_wl',JSON.stringify(d));
-      document.getElementById(fid).style.display='none';document.getElementById(sid).style.display='block';
-    }
-  });
-}
-setup('f1','e1','s1');setup('f2','e2','s2');
-</script>
-</body>
-</html>
+  <div class="problem-grid" style="margin-top:3rem">
+    <div class="chat-sim reveal-l">
+      <div class="chat-header">
+        <div class="chat-avatar">🍽️</div>
+        <div>
+          <div class="chat-title">Saturday dinner crew 🍕</div>
+          <div class="chat-sub">5 members</div>
+        </div>
+      </div>
+      <div class="msg them"><div class="msg-name">Alex</div>Anyone free Saturday?</div>
+      <div class="msg me"><div class="msg-name">You</div>Yes! After 7pm</div>
+      <div class="msg them"><div class="msg-name">Sam</div>I'm vegetarian so not that place again 🙏</div>
+      <div class="msg them"><div class="msg-name">Jordan</div>Can only do before 8, I have work Sunday</div>
+      <div class="msg them"><div class="msg-name">Alex</div>What about that new place on Valencia?</div>
+      <div class="msg me"><div class="msg-name">You</div>Is it even open Saturday?</div>
+      <div class="msg them"><div class="msg-name">Sam</div>Do they have veggie options?</div>
+      <div class="msg them"><div class="msg-name">Jordan</div>What's the price range?</div>
+      <div class="msg them"><div class="msg-name">Alex</div>Actually I might have something at 7:30 😬</div>
+      <div class="msg them"><div class="msg-name">Sam</div>Maybe next weekend?</div>
+      <div class="chaos-label">Three days later. Nobody ate. 😔</div>
+    </div>
+    <div class="problem-photo reveal-r">
+      <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80&fit=crop" alt="Friends laughing at dinner" loading="lazy"/>
+      <div class="problem-photo-caption">This is what you actually wanted.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SKIP TO THE GOOD PART -->
+<div class="skip-section">
+  <div class="skip-bg"></div>
+  <div class="skip-overlay"></div>
+  <div class="skip-content">
+    <p class="tag tag-coral reveal" style="margin-bottom:1rem">What Crewdine does</p>
+    <h2 class="reveal" style="font-size:clamp(2.2rem,6vw,4rem)">Skip straight to<br/><em>the good part.</em></h2>
+    <p class="big-quote reveal">The point was never to plan a dinner. The point was to be with your people.</p>
+    <p class="reveal" style="color:rgba(245,239,230,.65);font-size:1rem;max-width:480px;margin:1.5rem auto 0">Crewdine takes everyone's availability, preferences, budget and dietary needs — and turns them into a booked table. No negotiation required.</p>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip" style="margin-top:5rem">
+  <div class="strip-photo reveal">
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80&fit=crop" alt="Restaurant ambiance" loading="lazy"/>
+  </div>
+  <div class="strip-photo reveal">
+    <img src="https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=400&q=80&fit=crop" alt="Food on table" loading="lazy"/>
+  </div>
+  <div class="strip-photo reveal">
+    <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=400&q=80&fit=crop" alt="Friends at restaurant" loading="lazy"/>
+  </div>
+  <div class="strip-photo reveal">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80&fit=crop" alt="Restaurant interior" loading="lazy"/>
+  </div>
+</div>
+
+<!-- FRIEND GROUPS -->
+<div class="audience">
+  <div class="audience-photo reveal-l">
+    <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80&fit=crop&crop=faces" alt="Group of friends dining together" loading="lazy"/>
+    <div class="audience-photo-badge">👥 For friend groups</div>
+  </div>
+  <div class="audience-text reveal-r">
+    <p class="tag tag-coral">Friend groups</p>
+    <h2>Everyone's in.<br/><em>Nobody had to fight for it.</em></h2>
+    <p class="lead">Create a group, invite your crew, and let everyone add their own constraints privately. Crewdine does the rest.</p>
+    <div class="feat-list">
+      <div class="feat-item">
+        <div class="feat-icon coral">🗓️</div>
+        <div class="feat-text">
+          <h4>Availability matching</h4>
+          <p>Everyone marks when they're free. Crewdine finds the overlap — no more back and forth.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon coral">🥗</div>
+        <div class="feat-text">
+          <h4>Dietary & budget aware</h4>
+          <p>Vegan, halal, gluten-free, budget dinner — every constraint is respected, privately.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon coral">📲</div>
+        <div class="feat-text">
+          <h4>One-tap booking + calendar invite</h4>
+          <p>Confirm the suggestion and the table is booked. Everyone gets a calendar invite automatically.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLO DINERS -->
+<div class="audience reverse" style="background:linear-gradient(to right,rgba(1
