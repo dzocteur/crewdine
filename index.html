@@ -10,15 +10,15 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#090806;
+  --bg:#0C0A08;
   --coral:#E8503A;
   --coral2:#F0725E;
   --cream:#F5EFE6;
-  --dim:#8A7A6A;
+  --dim:#A89880;
   --gold:#C49A2A;
   --green:#2A7A4A;
   --border:rgba(245,239,230,0.07);
-  --card:#111009;
+  --card:#161310;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden}
@@ -54,7 +54,7 @@ h1 em{font-style:italic;color:var(--coral)}
 .scroll-hint div{width:1px;height:40px;background:linear-gradient(to bottom,var(--coral),transparent)}
 
 /* SECTIONS */
-.section{padding:6rem 1.5rem;max-width:1100px;margin:0 auto}
+.section{padding:6rem 1.5rem;max-width:1100px;margin:0 auto}.section-alt{background:rgba(255,255,255,0.02);border-top:1px solid rgba(245,239,230,0.05);border-bottom:1px solid rgba(245,239,230,0.05)}
 .section-sm{padding:4rem 1.5rem;max-width:1100px;margin:0 auto}
 .tag{font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem}
 .tag-coral{color:var(--coral)}
@@ -66,14 +66,14 @@ h2 em{font-style:italic;font-weight:300;color:var(--dim)}
 
 /* PROBLEM SECTION */
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;align-items:center}
-.chat-sim{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.chat-sim{background:#1A1510;border:1px solid rgba(245,239,230,0.12);border-radius:1.5rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
 .chat-header{display:flex;align-items:center;gap:.75rem;padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:.5rem}
 .chat-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#444,#222);display:flex;align-items:center;justify-content:center;font-size:.9rem}
 .chat-title{font-size:.85rem;font-weight:500}
 .chat-sub{font-size:.7rem;color:var(--dim)}
 .msg{max-width:80%;padding:.6rem .9rem;border-radius:1rem;font-size:.82rem;line-height:1.4}
-.msg.them{background:rgba(245,239,230,.07);border-radius:1rem 1rem 1rem .2rem;align-self:flex-start}
-.msg.me{background:rgba(232,80,58,.15);border-radius:1rem 1rem .2rem 1rem;align-self:flex-end;text-align:right}
+.msg.them{background:rgba(245,239,230,.1);border-radius:1rem 1rem 1rem .2rem;align-self:flex-start}
+.msg.me{background:rgba(232,80,58,.2);border-radius:1rem 1rem .2rem 1rem;align-self:flex-end;text-align:right}
 .msg-name{font-size:.65rem;color:var(--dim);margin-bottom:.2rem}
 .chaos-label{text-align:center;font-size:.75rem;color:var(--coral);letter-spacing:.08em;margin-top:.5rem}
 .vs-divider{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:0 .5rem}
@@ -116,7 +116,7 @@ h2 em{font-style:italic;font-weight:300;color:var(--dim)}
 .wins h2{margin-bottom:.75rem}
 .wins-sub{font-size:1rem;color:var(--dim);margin-bottom:3rem}
 .wins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.win-card{padding:2rem 1.5rem;border:1px solid var(--border);border-radius:1.5rem;background:var(--card);text-align:left;position:relative;overflow:hidden;transition:border-color .3s,transform .2s}
+.win-card{padding:2rem 1.5rem;border:1px solid rgba(245,239,230,0.1);border-radius:1.5rem;background:#181310;text-align:left;position:relative;overflow:hidden;transition:border-color .3s,transform .2s}
 .win-card:hover{border-color:rgba(232,80,58,.25);transform:translateY(-3px)}
 .win-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .win-card.friends::before{background:var(--coral)}
@@ -129,7 +129,7 @@ h2 em{font-style:italic;font-weight:300;color:var(--dim)}
 /* HOW IT WORKS */
 .hiw{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
 .hiw-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:1.5rem;overflow:hidden;margin-top:2.5rem}
-.hiw-step{background:var(--card);padding:2.5rem 2rem}
+.hiw-step{background:#181310;padding:2.5rem 2rem}
 .step-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:700;color:rgba(232,80,58,.1);line-height:1;margin-bottom:1rem}
 .step-icon{font-size:1.6rem;margin-bottom:.75rem}
 .hiw-step h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:400;margin-bottom:.4rem}
@@ -159,11 +159,11 @@ footer a:hover{color:var(--cream)}
 .flinks{display:flex;gap:1.5rem}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:none}
-.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease}
+.reveal-l{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .reveal-l.on{opacity:1;transform:none}
-.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal-r{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .reveal-r.on{opacity:1;transform:none}
 
 /* ANIMATIONS */
@@ -322,4 +322,199 @@ footer a:hover{color:var(--cream)}
 </div>
 
 <!-- SOLO DINERS -->
-<div class="audience reverse" style="background:linear-gradient(to right,rgba(1
+<div class="audience reverse" style="background:linear-gradient(to right,rgba(196,154,42,.03),transparent);border-radius:2rem">
+  <div class="audience-photo reveal-r">
+    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80&fit=crop&crop=faces" alt="Solo diner meeting new people" loading="lazy"/>
+    <div class="audience-photo-badge" style="color:var(--gold);border-color:rgba(196,154,42,.4)">✨ For solo diners</div>
+  </div>
+  <div class="audience-text reveal-l">
+    <p class="tag tag-gold">Solo diners</p>
+    <h2>New city. New people.<br/><em>Real connection.</em></h2>
+    <p class="lead">New to SF, remote worker, or just want to expand your circle? Crewdine matches you with compatible strangers for a dinner worth having.</p>
+    <div class="feat-list">
+      <div class="feat-item">
+        <div class="feat-icon gold">🌍</div>
+        <div class="feat-text">
+          <h4>Join a social table</h4>
+          <p>Tell us your preferences and availability. We match you with 3-5 people who share your vibe.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon gold">🤝</div>
+        <div class="feat-text">
+          <h4>Vetted matches</h4>
+          <p>Everyone is verified. Shared interests, compatible budgets, same energy. No awkward mismatches.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon gold">🗺️</div>
+        <div class="feat-text">
+          <h4>Discover SF together</h4>
+          <p>Hidden gems, neighborhood spots, new openings — Crewdine knows SF's best tables for every taste.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESTAURANTS -->
+<div class="audience">
+  <div class="audience-photo reveal-l">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop" alt="Beautiful restaurant interior" loading="lazy"/>
+    <div class="audience-photo-badge" style="color:#4CAF82;border-color:rgba(42,122,74,.4)">🍴 For restaurants</div>
+  </div>
+  <div class="audience-text reveal-r">
+    <p class="tag tag-green">Restaurant partners</p>
+    <h2>Fill your tables with<br/><em>the right guests.</em></h2>
+    <p class="lead">Crewdine sends you pre-matched groups who chose your restaurant because it fits them perfectly. Higher satisfaction, better reviews, real loyalty.</p>
+    <div class="feat-list">
+      <div class="feat-item">
+        <div class="feat-icon green">📊</div>
+        <div class="feat-text">
+          <h4>Predictable bookings</h4>
+          <p>Groups arrive on time, know what they want, and stay longer. No last-minute cancellations.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon green">⭐</div>
+        <div class="feat-text">
+          <h4>Better reviews</h4>
+          <p>Guests who chose you because you match their preferences are guests who leave 5-star reviews.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon green">💰</div>
+        <div class="feat-text">
+          <h4>Zero upfront cost</h4>
+          <p>We only charge a small commission on confirmed bookings. No subscription, no risk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EVERYBODY WINS -->
+<div class="wins">
+  <p class="tag tag-coral reveal">The big picture</p>
+  <h2 class="reveal">Everybody wins.</h2>
+  <p class="wins-sub reveal">Crewdine is the only platform that works for the whole dining ecosystem.</p>
+  <div class="wins-grid">
+    <div class="win-card friends reveal">
+      <div class="win-emoji">👥</div>
+      <h3>Friend groups</h3>
+      <p>Stop losing evenings to logistics. Crewdine turns a chaotic group chat into a confirmed dinner in minutes. More dinners. Better memories.</p>
+    </div>
+    <div class="win-card solo reveal">
+      <div class="win-emoji">✨</div>
+      <h3>Solo diners</h3>
+      <p>Move to SF and actually build a social life. Meet interesting people over great food. Turn strangers into friends, one dinner at a time.</p>
+    </div>
+    <div class="win-card resto reveal">
+      <div class="win-emoji">🍴</div>
+      <h3>Restaurants</h3>
+      <p>Receive pre-matched guests who already love your concept. Higher spend, better reviews, genuine loyalty — not discount-chasers.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="hiw">
+  <p class="tag tag-coral reveal">Simple by design</p>
+  <h2 class="reveal">How it works.</h2>
+  <div class="hiw-steps reveal">
+    <div class="hiw-step">
+      <div class="step-num">01</div>
+      <div class="step-icon">📋</div>
+      <h3>Tell us what you need</h3>
+      <p>Add your availability, dietary needs, budget and what kind of food you're feeling. Takes 60 seconds.</p>
+    </div>
+    <div class="hiw-step">
+      <div class="step-num">02</div>
+      <div class="step-icon">⚡</div>
+      <h3>Crewdine matches</h3>
+      <p>For groups: your crew's constraints are cross-referenced. For solo: you're matched with compatible people. Best restaurants surface automatically.</p>
+    </div>
+    <div class="hiw-step">
+      <div class="step-num">03</div>
+      <div class="step-icon">🎉</div>
+      <h3>Show up. Enjoy.</h3>
+      <p>Table booked. Calendar invite sent. Reminders set. You just have to show up and be present.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="final-bg"></div>
+  <div class="final-overlay"></div>
+  <div class="final-content">
+    <h2 class="reveal">Life is short.<br/><em>Eat well.</em><br/>Together.</h2>
+    <p class="reveal">SF launch coming soon. Join the waitlist and be first in the door.</p>
+    <div class="form-wrap reveal">
+      <form class="wlf" id="f2">
+        <input type="email" id="e2" placeholder="your@email.com" required autocomplete="email"/>
+        <button type="submit">Reserve my spot</button>
+      </form>
+      <p class="fnote">Free for users forever · SF launch · No spam</p>
+      <div class="success-msg" id="s2">🎉 You're in! See you at the table.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="#">Crew<span style="color:var(--coral)">dine</span></a>
+  <p>© 2026 Crewdine LLC · San Francisco, CA</p>
+  <div class="flinks">
+    <a href="mailto:hello@crewdine.com">Contact</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </div>
+</footer>
+
+<script>
+// All content visible by default, animate on scroll for nice effect
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(el => {
+    if(el.isIntersecting){
+      el.target.style.opacity = '1';
+      el.target.style.transform = 'none';
+      obs.unobserve(el.target);
+    }
+  });
+}, {threshold:.05, rootMargin:'0px 0px -30px 0px'});
+// Everything visible immediately, no hiding
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => {
+  el.style.opacity = '1';
+  el.style.transform = 'none';
+});
+
+// Waitlist forms
+function setup(fid, eid, sid) {
+  document.getElementById(fid).addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = document.getElementById(eid).value.trim();
+    const btn = document.getElementById(fid).querySelector('button');
+    btn.textContent = 'Joining...'; btn.disabled = true;
+    try {
+      const r = await fetch('https://formspree.io/f/xpqobavr', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({email, source:'crewdine-waitlist'})
+      });
+      if(r.ok){ document.getElementById(fid).style.display='none'; document.getElementById(sid).style.display='block'; }
+      else throw new Error();
+    } catch {
+      const d = JSON.parse(localStorage.getItem('cd_wl')||'[]');
+      d.push({email, ts: new Date().toISOString()});
+      localStorage.setItem('cd_wl', JSON.stringify(d));
+      document.getElementById(fid).style.display='none';
+      document.getElementById(sid).style.display='block';
+    }
+  });
+}
+setup('f1','e1','s1');
+setup('f2','e2','s2');
+</script>
+</body>
+</html>
